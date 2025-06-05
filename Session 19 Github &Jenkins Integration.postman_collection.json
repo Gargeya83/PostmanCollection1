@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "b3ec5385-f73a-4d68-ae5b-78e1637dbbd5",
+		"name": "Session 19 Github &Jenkins Integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32029569"
+	},
+	"item": [
+		{
+			"name": "Get request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"/*open jenkin newman run\r",
+							"1. click on the new item\r",
+							"2. Enter an item name \r",
+							"3. Select the type of project (Freestyle project)\r",
+							"4. Build Steps\r",
+							"\r",
+							" \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\Session 3.postman_collection.json\" -g \r",
+							" C:\\Users\\GB\\OneDrive\\Documents\\Json file\\workspace.postman_globals.json\"\r",
+							"\r",
+							" /*open jenkin newman run\r",
+							"1. click on the new item\r",
+							"2. Enter an item name \r",
+							"3. Select the type of project (Freestyle project)\r",
+							"4. Build Steps\r",
+							"\r",
+							"  newman run \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\Session 3.postman_collection.json\" -g \r",
+							" C:\\Users\\GB\\OneDrive\\Documents\\Json file\\workspace.postman_globals.json\"\r",
+							"\r",
+							" newman run \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\Session 18 Generate and publish Newman Reports on Jenkins.postman_collection.json\" -g \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\workspace.postman_globals.json\" --reporters cli,junit --reporter-junit-export \"report\\\\newmanreport.xml\"\r",
+							"\r",
+							" Path where report is generate --reporters cli,junit --reporter-junit-export \"report/newmanreport.xml\"\r",
+							"\r",
+							" newman run \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\Session 18 Generate and publish Newman Reports on Jenkins.postman_collection.json\" ^\r",
+							"  -g \"C:\\Users\\GB\\OneDrive\\Documents\\Json file\\workspace.postman_globals.json\" ^\r",
+							"  --reporters cli,junit,htmlextra ^\r",
+							"  --reporter-junit-export \"report\\newmanreport.xml\" ^\r",
+							"  --reporter-htmlextra-export \"report\\newmanreport_htmlextra.html\"\r",
+							"https://github.com/Gargeya83/PostmanCollection.git\r",
+							"*/\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"example_name\",\r\n  \"job\": \"example_job\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				},
+				"description": "This API endpoint is used to create a new user. The HTTP POST request should be made to [https://reqres.in/api/users](https://reqres.in/api/users) with a valid JSON object containing the necessary user details such as name and job in the request body.\n\nThe request body should be in the following format:\n\n``` json\n{\n  \"name\": \"example_name\",\n  \"job\": \"example_job\"\n}\n\n ```\n\nReplace \"example_name\" with the user's name and \"example_job\" with the user's job details."
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"GB\",\r\n    \"job\": \"Senior engineer\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/41",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"41"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://reqres.in/api/users/41",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"41"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
